@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quando o corpo diz basta — Reportagem</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --muted: #6B6155;
+    --accent: #8B4A6B;
+    --accent-light: #F0E6EC;
+    --warm: #C4773A;
+    --warm-light: #F5EBE0;
+    --border: rgba(26,20,16,0.12);
+    --border-strong: rgba(26,20,16,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .hero-text {
+    padding: 8vh 6vw 8vh 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 500; }
+
+  .hero-visual {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual-inner {
+    padding: 4rem;
+    text-align: center;
+  }
+  .hero-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: rgba(245,240,232,0.9);
+    line-height: 1.5;
+    position: relative;
+  }
+  .hero-quote::before {
+    content: '\201C';
+    font-size: 6rem;
+    color: var(--accent);
+    opacity: 0.4;
+    position: absolute;
+    top: -2rem;
+    left: -1rem;
+    line-height: 1;
+  }
+  .hero-quote-attr {
+    margin-top: 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+  .hero-stat-bar {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,240,232,0.1);
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .hero-stat .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    display: block;
+    margin-top: 0.25rem;
+    max-width: 100px;
+  }
+
+  /* SECTIONS */
+  section { border-bottom: 1px solid var(--border); }
+
+  .section-header {
+    padding: 5rem 5vw 0;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--border-strong);
+    line-height: 1;
+    text-align: right;
+    padding-top: 0.2rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  /* INTRO SECTION */
+  .intro-body {
+    padding: 3rem 5vw 5rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+  }
+  .intro-body .spacer { }
+  .intro-text { max-width: 680px; }
+  .intro-text p { margin-bottom: 1.5rem; color: #2A2218; }
+  .intro-text p:last-child { margin-bottom: 0; }
+
+  .stat-inline {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .stat-inline .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .stat-inline .caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    display: block;
+  }
+  .stat-inline .source {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    opacity: 0.7;
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    padding: 0 5vw 5rem;
+  }
+  .timeline-inner {
+    padding-left: 200px;
+    padding-right: 0;
+    margin-top: 3rem;
+  }
+  @media (max-width: 900px) { .timeline-inner { padding-left: 0; } }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border-strong);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 3rem 3rem;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--border-strong);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .tl-item.highlight .tl-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    width: 14px;
+    height: 14px;
+    left: -7px;
+  }
+  .tl-year {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    padding-top: 2px;
+    letter-spacing: 0.03em;
+  }
+  .tl-item.highlight .tl-year { color: var(--accent); font-weight: 500; }
+  .tl-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .tl-content p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .tl-quote {
+    margin-top: 0.8rem;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 0.95rem;
+    border-left: 2px solid var(--accent-light);
+    padding-left: 1rem;
+  }
+
+  /* PERFIL */
+  .perfil-section {
+    padding: 0 5vw 5rem;
+  }
+  .perfil-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border-strong);
+  }
+  .perfil-left {
+    padding: 3rem;
+    border-right: 1px solid var(--border);
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .perfil-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .perfil-age {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 2rem;
+  }
+  .perfil-bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 2rem;
+  }
+  .perfil-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid rgba(245,240,232,0.2);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin: 0 6px 6px 0;
+  }
+  .perfil-tag.accent { border-color: var(--accent); color: #D4A0BC; }
+
+  .perfil-right { padding: 3rem; }
+  .perfil-right h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .qa-item { margin-bottom: 2rem; }
+  .qa-q {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .qa-a {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .qa-a em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* AUDIO PLACEHOLDER */
+  .audio-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--warm-light);
+  }
+  .audio-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .audio-label::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--warm);
+    display: inline-block;
+  }
+  .audio-placeholder {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  audio {
+    width: 100%;
+    margin-top: 0.75rem;
+    accent-color: var(--accent);
+  }
+
+  /* DADOS */
+  .dados-section {
+    padding: 0 5vw 5rem;
+  }
+  .dados-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-strong);
+    border: 1px solid var(--border-strong);
+  }
+  .dado-card {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .dado-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .dado-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+    display: block;
+  }
+  .dado-fonte {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.6;
+    margin-top: 0.5rem;
+    display: block;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .fatores-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .fator-item {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+  .fator-item h5 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+  .fator-item p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* VOZES */
+  .vozes-section {
+    padding: 0 5vw 5rem;
+  }
+  .vozes-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .voz-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+  }
+  .voz-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .voz-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .voz-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+  .voz-quote {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .voz-quote::before { content: '\201C'; }
+  .voz-quote::after { content: '\201D'; }
+  .voz-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* SEGUNDA PESSOA — PLACEHOLDER */
+  .segunda-section {
+    background: var(--warm-light);
+    padding: 5rem 5vw;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .segunda-left { }
+  .segunda-right { }
+  .placeholder-box {
+    border: 2px dashed rgba(196,119,58,0.3);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .placeholder-box .ph-icon {
+    font-size: 2rem;
+    color: var(--warm);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .placeholder-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: var(--warm);
+  }
+  .placeholder-box p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* METODOLOGIA */
+  .metod-section {
+    padding: 4rem 5vw;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .metod-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    padding-top: 4px;
+    text-align: right;
+  }
+  .metod-body {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.8;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .metod-body p { margin-bottom: 1rem; }
+  .metod-body strong { color: rgba(245,240,232,0.85); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 5vw;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .footer-credits {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 400px; }
+    .section-header, .intro-body, .segunda-section, .metod-section { grid-template-columns: 1fr; }
+    .section-num { text-align: left; font-size: 3rem; }
+    .timeline-inner { padding-left: 0; }
+    .perfil-grid, .vozes-grid, .dados-grid { grid-template-columns: 1fr; }
+    .fatores-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.55s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Reportagem de Investigação</span>
+  <div class="nav-links">
+    <a href="#historia">História</a>
+    <a href="#dados">Dados</a>
+    <a href="#vozes">Vozes</a>
+    <a href="#segunda">2.ª Pessoa</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="label">Géneros Jornalísticos · Reportagem de Investigação</p>
+    <h1>Quando o corpo<br><em>diz basta</em></h1>
+    <p class="hero-deck">O que acontece a quem atingiu o limite, colapsou — e decidiu mudar de vida? Duas histórias de reinvenção após o <em>burnout</em> e uma pergunta que é de todos nós.</p>
+    <div class="hero-meta">
+      <strong>Por Tânia Pato Silva</strong> &nbsp;·&nbsp; Ciências da Comunicação, IADE &nbsp;·&nbsp; 2025
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-inner">
+      <p class="hero-quote">Liguei o computador e não me lembrava como se entrava no Excel. Deu um curto-circuito completo.</p>
+      <p class="hero-quote-attr">— Helena Costa, Fevereiro de 2017</p>
+      <div class="hero-stat-bar">
+        <div class="hero-stat">
+          <span class="num">61%</span>
+          <span class="desc">dos portugueses em risco de burnout</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">3%</span>
+          <span class="desc">fazem terapia</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">32%</span>
+          <span class="desc">com ansiedade generalizada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECÇÃO 1: INTRODUÇÃO -->
+<section id="intro">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <h2 class="section-title">A vida depois do horário</h2>
+    </div>
+  </div>
+  <div class="intro-body">
+    <div class="spacer"></div>
+    <div class="intro-text">
+      <p>Na sociedade contemporânea, a ansiedade afeta profissionais de diferentes setores, alimentada pela sobrecarga de trabalho, por culturas organizacionais exigentes e pela falta de apoio psicológico. As consequências são concretas: quebra de produtividade, absentismo, e — no limite — burnout.</p>
+      <p>Mas o que acontece <em>depois</em>? O que fazem as pessoas que chegaram ao colapso e decidiram que não podiam voltar ao que era? Esta reportagem acompanha duas histórias de reinvenção profissional — e ouve os especialistas que trabalham, todos os dias, com este problema.</p>
+
+      <div class="stat-inline">
+        <span class="big">12 mil milhões</span>
+        <span class="caption">de dias de trabalho perdidos por ano devido a depressão e ansiedade, segundo a OMS</span>
+        <span class="source">Fonte: Mental health at work, OMS, 2024</span>
+      </div>
+
+      <p>Os números são eloquentes, mas são as histórias que tornam o problema humano. Helena Costa passou 28 anos na indústria automóvel. Em fevereiro de 2017, chegou ao trabalho e não se lembrava de abrir o Excel. Hoje dá aulas de yoga. Esta é a sua história — e a de uma geração que aprendeu, da pior forma, a ouvir o próprio corpo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECÇÃO 2: HISTÓRIA DA HELENA -->
+<section id="historia">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <h2 class="section-title">Helena Costa — Do burnout ao yoga</h2>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <div class="timeline-inner">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1989–2016</div>
+          <div class="tl-content">
+            <h4>28 anos na indústria automóvel</h4>
+            <p>Entre a logística e a qualidade, Helena liderou equipas numa fábrica que funciona 24 horas por dia. Avaliações acima da média, objetivos cumpridos — e um desgaste silencioso a acumular-se.</p>
+          </div>
+        </div>
+
+        <div class="tl-item highlight">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Fev. 2017</div>
+          <div class="tl-content">
+            <h4>O colapso</h4>
+            <p>Ao chegar ao trabalho, Helena liga o computador e não se lembra como se entra no Excel. A empresa trabalhava dia e noite. O telefone tocava durante a noite. O ritmo era insustentável.</p>
+            <p class="tl-quote">Deu um curto-circuito completo.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Fev.–Jun. 2017</div>
+          <div class="tl-content">
+            <h4>Ataques de pânico e a descoberta do yoga</h4>
+            <p>Internamento hospitalar com ataques de pânico severos. A medicação agravou o estado. Em busca de alternativas, Helena encontra o yoga na internet e começa a praticar sozinha em casa — porque não conseguia sair.</p>
+          </div>
+        </div>
+
+        <div class="tl-item highlight">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Jul. 2017</div>
+          <div class="tl-content">
+            <h4>O primeiro passo fora de casa</h4>
+            <p>Helena inscreve-se num centro de yoga na Quinta do Anjo e paga 3 meses de uma vez para se obrigar a ir.</p>
+            <p class="tl-quote">Muitas vezes chegava lá a tremer, mas saía sempre de lá bem.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2018</div>
+          <div class="tl-content">
+            <h4>Psicoterapia e fim da medicação</h4>
+            <p>Combina yoga com psicoterapia. No final do ano, consegue deixar a medicação e nunca mais volta a ter ataques de pânico. Regressa brevemente à indústria — e percebe que o ambiente já não a afeta.</p>
+          </div>
+        </div>
+
+        <div class="tl-item highlight">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Jan. 2019</div>
+          <div class="tl-content">
+            <h4>A mudança definitiva</h4>
+            <p>Helena sai da indústria dois anos antes da empresa encerrar. Inscreve-se na Confederação Portuguesa do Yoga e dedica-se exclusivamente ao estudo, prática e ensino.</p>
+            <p class="tl-quote">Não tinha sido a empresa que mudou, mas eu mudei.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Hoje</div>
+          <div class="tl-content">
+            <h4>Instrutora de yoga e uma nova vida</h4>
+            <p>53 anos, dá aulas de yoga e inspira dezenas de alunos. Sonha com um pequeno centro próprio, perto de Pinhal Novo, rodeado de natureza.</p>
+            <p class="tl-quote">Tive a oportunidade de renascer nesta vida.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PERFIL -->
+  <div class="perfil-section">
+    <div class="perfil-grid">
+      <div class="perfil-left">
+        <p class="perfil-name">Helena Costa</p>
+        <p class="perfil-age">53 anos · Instrutora de Yoga · Pinhal Novo</p>
+        <p class="perfil-bio">Passou 28 anos entre a logística e a qualidade na indústria automóvel. Em 2017, um burnout com ataques de pânico mudou-lhe a vida. Em 2019, abandonou definitivamente o mundo corporativo. Hoje ensina yoga e estuda os Yoga Sutras de Patañjali.</p>
+        <span class="perfil-tag">Indústria automóvel</span>
+        <span class="perfil-tag accent">Yoga</span>
+        <span class="perfil-tag">Pranayama</span>
+        <span class="perfil-tag">Burnout</span>
+        <span class="perfil-tag">Ataques de pânico</span>
+
+        <!-- ÁUDIO -->
+        <div class="audio-box" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15);">
+          <div class="audio-label" style="color: #C4A882;">Áudio da entrevista</div>
+          <p class="audio-placeholder" style="color: rgba(245,240,232,0.45);">Coloca aqui o ficheiro de áudio da entrevista com a Helena Costa.</p>
+          <!-- DESCOMENTA E SUBSTITUI O CAMINHO QUANDO TIVERES O ÁUDIO:
+          <audio controls>
+            <source src="audio-helena-costa.mp3" type="audio/mpeg">
+          </audio>
+          -->
+        </div>
+      </div>
+
+      <div class="perfil-right">
+        <h4>Excertos da entrevista</h4>
+
+        <div class="qa-item">
+          <p class="qa-q">Em que momento percebeu que estava em burnout?</p>
+          <p class="qa-a"><em>Eu só percebi quando caí mesmo para o lado porque eu não parava.</em> Adoeci várias vezes no último trimestre de 2016, sem nunca associar a um desgaste mental.</p>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">O que a levou a começar o yoga?</p>
+          <p class="qa-a">Cheguei ao extremo de dizer <em>«eu não consigo continuar a viver assim»</em>. Não conseguia sair de casa com medo de ter um ataque de pânico. Fui à internet à procura de soluções.</p>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Que mensagem deixa a quem está no limite?</p>
+          <p class="qa-a"><em>Procurem ajuda e não tenham vergonha.</em> Partilho a minha história exactamente por isso. Caminhem — se não conseguirem fazer mais nada, caminhem. Aprendam a respirar conscientemente.</p>
+        </div>
+
+        <div class="qa-item">
+          <p class="qa-q">Como descreve a sua vida hoje?</p>
+          <p class="qa-a">Valorizo muito o silêncio. <em>Até ter tido o burnout, eu não sabia o que era estar em silêncio.</em> Hoje aceito que as coisas acontecem como têm de acontecer, e isso trouxe-me paz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECÇÃO 3: DADOS -->
+<section id="dados">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <h2 class="section-title">O burnout em números</h2>
+    </div>
+  </div>
+  <div class="dados-section">
+    <div class="dados-grid">
+      <div class="dado-card">
+        <span class="dado-num">61%</span>
+        <span class="dado-desc">dos portugueses sentem-se esgotados ou em risco de burnout</span>
+        <span class="dado-fonte">STADA Health Report, 2025</span>
+      </div>
+      <div class="dado-card">
+        <span class="dado-num">32%</span>
+        <span class="dado-desc">dos adultos portugueses apresentam sintomas de ansiedade generalizada</span>
+        <span class="dado-fonte">INE, Inquérito às Condições de Vida, 2024</span>
+      </div>
+      <div class="dado-card">
+        <span class="dado-num">3%</span>
+        <span class="dado-desc">dos portugueses com problemas de saúde mental fazem terapia</span>
+        <span class="dado-fonte">STADA Health Report, 2025</span>
+      </div>
+      <div class="dado-card">
+        <span class="dado-num">38,2%</span>
+        <span class="dado-desc">das mulheres apresentam sintomas de ansiedade generalizada, contra 24,7% nos homens</span>
+        <span class="dado-fonte">INE, 2024</span>
+      </div>
+      <div class="dado-card">
+        <span class="dado-num">18%</span>
+        <span class="dado-desc">do grupo dos 16-64 anos sentiu limitações nas atividades habituais por problemas de saúde</span>
+        <span class="dado-fonte">INE, 2024</span>
+      </div>
+      <div class="dado-card">
+        <span class="dado-num">1 bi $</span>
+        <span class="dado-desc">perdidos por ano em produtividade devido a depressão e ansiedade no trabalho</span>
+        <span class="dado-fonte">OMS, Mental health at work, 2024</span>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3rem; margin-bottom: 1rem;">Fatores de risco identificados pela OMS</h3>
+    <div class="fatores-grid">
+      <div class="fator-item">
+        <h5>Cargas de trabalho excessivas</h5>
+        <p>Ritmos insustentáveis sem períodos de recuperação adequados</p>
+      </div>
+      <div class="fator-item">
+        <h5>Discriminação e desigualdade</h5>
+        <p>Ambientes onde nem todos têm as mesmas oportunidades e reconhecimento</p>
+      </div>
+      <div class="fator-item">
+        <h5>Baixa autonomia</h5>
+        <p>Falta de controlo sobre as próprias tarefas e decisões profissionais</p>
+      </div>
+      <div class="fator-item">
+        <h5>Insegurança laboral</h5>
+        <p>Incerteza sobre a continuidade do emprego e condições contratuais</p>
+      </div>
+      <div class="fator-item">
+        <h5>Ambientes tóxicos</h5>
+        <p>Culturas organizacionais onde o valor da competição supera o da colaboração</p>
+      </div>
+      <div class="fator-item">
+        <h5>Falta de apoio psicológico</h5>
+        <p>Ausência de canais efetivos de suporte dentro das organizações</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECÇÃO 4: VOZES ESPECIALIZADAS -->
+<section id="vozes">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <h2 class="section-title">As vozes dos especialistas</h2>
+    </div>
+  </div>
+  <div class="vozes-section">
+    <div class="vozes-grid">
+      <div class="voz-card">
+        <div class="voz-header">
+          <p class="voz-name">Dorinda Félix</p>
+          <p class="voz-role">Profissional de Recursos Humanos</p>
+        </div>
+        <p class="voz-quote">Temos de estar atentos às alterações de comportamento.</p>
+        <p class="voz-body">Dorinda descreve um cenário em evolução: muitas empresas já promovem estilos de vida saudáveis e incluem sessões de psicologia nos seguros de saúde. Mas o que falta, insiste, é mais profundo: normalizar as questões de saúde mental e eliminar os estigmas associados. Para si, a terapia deve ser encarada como prevenção — como uma ida regular ao dentista — e não apenas como resposta à crise.</p>
+
+        <div class="audio-box" style="margin-top: 1.5rem;">
+          <div class="audio-label">Áudio</div>
+          <p class="audio-placeholder">Adiciona aqui o áudio da entrevista com Dorinda Félix.</p>
+        </div>
+      </div>
+
+      <div class="voz-card">
+        <div class="voz-header">
+          <p class="voz-name">Vera Celestino</p>
+          <p class="voz-role">Psicóloga Clínica</p>
+        </div>
+        <p class="voz-quote">Vivemos em contínua perceção de ameaça e sentimento de ansiedade.</p>
+        <p class="voz-body">A psicóloga contrasta o stress ancestral — ligado a perigos físicos — com o stress moderno, onde o perigo é sobretudo mental mas a resposta do corpo é a mesma. Explica que o burnout resulta de stress crónico com sinais físicos e cognitivos claros: aperto no peito, insónia, falhas de memória, procrastinação. E defende que é essencial definir limites saudáveis entre as exigências da organização e o que é sustentável para cada trabalhador.</p>
+
+        <div class="audio-box" style="margin-top: 1.5rem;">
+          <div class="audio-label">Áudio</div>
+          <p class="audio-placeholder">Adiciona aqui o áudio da entrevista com Vera Celestino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECÇÃO 5: SEGUNDA PESSOA -->
+<section id="segunda">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <h2 class="section-title">A segunda história</h2>
+    </div>
+  </div>
+  <div class="segunda-section">
+    <div class="segunda-left">
+      <p style="font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); text-align: right;">Em breve</p>
+    </div>
+    <div class="segunda-right">
+      <div class="placeholder-box">
+        <span class="ph-icon">✦</span>
+        <h3>A tua segunda entrevistada</h3>
+        <p>Este espaço aguarda a segunda história de reinvenção após o burnout. Quando tiveres a entrevista, substitui este bloco pelo perfil, a timeline e os excertos — seguindo a mesma estrutura da Helena Costa.</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">Pede-me ajuda para integrar o novo conteúdo aqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section class="metod-section">
+  <div class="metod-label">Nota metodológica</div>
+  <div class="metod-body">
+    <p><strong>Esta reportagem foi produzida no âmbito da licenciatura em Ciências da Comunicação no IADE (2025).</strong> Foram realizadas entrevistas presenciais e por videochamada com as protagonistas e as especialistas citadas.</p>
+    <p>Os dados estatísticos têm como fontes o <strong>INE</strong> (Inquérito às Condições de Vida e Rendimento, 2024), o <strong>STADA Health Report 2025</strong>, o estudo <strong>Mental health at work da OMS (2024)</strong>, e o <strong>Observador</strong>. As entrevistas foram gravadas com consentimento informado e transcritas para fins jornalísticos.</p>
+    <p><strong>Autora:</strong> Tânia Pato Silva &nbsp;·&nbsp; <strong>Docente:</strong> [Nome do docente] &nbsp;·&nbsp; <strong>Unidade curricular:</strong> Géneros Jornalísticos</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Quando o corpo diz basta</div>
+  <div class="footer-credits">
+    Reportagem de investigação multimédia<br>
+    Tânia Pato Silva · IADE · Ciências da Comunicação · 2025
+  </div>
+</footer>
+
+</body>
+</html>
